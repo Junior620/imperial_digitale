@@ -4,7 +4,14 @@
   "installCommand": "npm ci",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "trailingSlash": false,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/fr", "destination": "/fr/index.html" },
+    { "source": "/en", "destination": "/en/index.html" },
+    { "source": "/fr/:page(a-propos|services|secteurs|notre-approche|projets|contact)", "destination": "/fr/:page/index.html" },
+    { "source": "/en/:page(about|services|industries|our-approach|projects|contact)", "destination": "/en/:page/index.html" },
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/en/(.*)", "destination": "/not-found-en.html" },
+    { "source": "/(.*)", "destination": "/not-found-fr.html" }
   ]
 }

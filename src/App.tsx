@@ -6,6 +6,7 @@ import { ui } from './ui'
 import { contactHref, pageIds, rememberLanguage, routes, storedLanguage } from './navigation'
 import { PageContent } from './pages'
 import type { Language, PageId } from './types'
+import { applyPageMetadata } from './seo'
 
 function Brand({ language }: { language: Language }) {
   return <Link to={routes[language].home} className="brand-mark" aria-label={`${content[language].brand} — ${content[language].nav.home}`}>
@@ -91,21 +92,17 @@ function Footer({ language }: { language: Language }) {
 function Site({ language, page }: { language: Language; page?: PageId }) {
   const location = useLocation()
   const previousPath = useRef(location.pathname)
-  const copy = content[language]
   const t = ui[language]
 
   useEffect(() => {
     rememberLanguage(language)
-    document.documentElement.lang = language
-    document.title = `${page ? copy.nav[page] : t.errorEyebrow} | ${copy.brand}`
-    const descriptions = { home: copy.meta, about: copy.about.intro[0], services: copy.servicesIntro.description, industries: copy.industriesIntro.description, approach: copy.approachIntro.description, projects: copy.projectsIntro.description, contact: copy.contactIntro.description }
-    document.querySelector('meta[name="description"]')?.setAttribute('content', page ? descriptions[page] : t.errorBody)
+    applyPageMetadata(language, page)
     if (!location.hash) window.scrollTo({ top: 0, behavior: 'instant' })
     if (previousPath.current !== location.pathname) {
       document.getElementById('main-content')?.focus({ preventScroll: true })
       previousPath.current = location.pathname
     }
-  }, [language, page, location.pathname, location.hash, copy, t])
+  }, [language, page, location.pathname, location.hash])
 
   useEffect(() => {
     if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return

@@ -18,6 +18,7 @@ Ouvrir `http://127.0.0.1:5173/`. Le français est utilisé au premier accès. Le
 ```sh
 npm test
 npm run build
+npm run test:build
 npm run preview
 ```
 
@@ -34,7 +35,7 @@ Le fichier `vercel.json` prépare le déploiement du site statique : framework *
 
 Aucune variable d’environnement, base de données ou fonction serveur n’est nécessaire. Les boutons de contact ouvrent volontairement un email prérempli dans la messagerie du visiteur.
 
-La réécriture SPA vers `index.html` permet l’accès direct et le rechargement des quatorze pages, notamment `/fr/a-propos` et `/en/our-approach`. Vercel sert les fichiers existants en priorité : les photographies, le logo, les favicons et les fichiers JavaScript/CSS restent accessibles normalement. Les chemins inconnus affichent la page d’erreur du site via React Router ; cette erreur est rendue côté navigateur après une réponse HTTP 200 du document SPA.
+Le build génère un document HTML pour chacune des quatorze pages, notamment `/fr/a-propos` et `/en/our-approach`. Les réécritures Vercel servent ces documents avec leurs métadonnées localisées. Vercel sert les fichiers existants en priorité : les photographies, le logo, les favicons et les fichiers JavaScript/CSS restent accessibles normalement. Les chemins inconnus utilisent un document de repli français ou anglais avec `noindex`, puis affichent la page d’erreur via React Router ; cette erreur est rendue côté navigateur après une réponse HTTP 200 du document SPA.
 
 Après le premier déploiement, vérifier les liens directs français et anglais, le changement de langue, le logo, les favicons et une URL inconnue. La configuration de ce dépôt prépare l’hébergement ; elle ne crée pas elle-même de projet Vercel.
 
@@ -46,6 +47,14 @@ Références : [Vite et les routes SPA sur Vercel](https://vercel.com/docs/frame
 - `src/ui.ts` : libellés d’interface et descriptions d’images traduits.
 - `src/navigation.ts` : routes, préférence de langue et liens email préremplis.
 - `src/index.css` : identité visuelle, effet verre, flou inférieur du hero et styles responsive.
+
+## Aperçus de partage
+
+Le domaine de référence est **https://imperialdigitale.vercel.app**, défini dans `src/seo.ts`. Les titres, descriptions, URL canoniques, langues et balises Open Graph / Twitter Card sont adaptés aux quatorze routes. `scripts/metadata.ts` les injecte dans les documents HTML pendant le build afin que les robots de partage puissent les lire sans exécuter JavaScript. La navigation React garde ces mêmes métadonnées à jour.
+
+Les visuels français et anglais `public/social/og-fr.png` et `og-en.png` mesurent **1200 × 630 px**. Ils utilisent le logo officiel et la police Inter sous licence SIL, conservée dans `assets/fonts/`. Pour les régénérer : `npm run social:generate`, puis `npm run build`. Les sources SVG sont conservées à côté des PNG.
+
+`npm run test:build` vérifie les documents réellement produits, leurs balises, leurs images et les réécritures Vercel. Les fichiers PNG et les balises sont publics ; les services de partage peuvent conserver en cache un ancien aperçu après un déploiement.
 
 Les consultations, propositions et demandes relatives à une mission ouvrent la messagerie du visiteur vers `contact@imperialdigitale.com`. Aucun email n’est envoyé automatiquement. Aucun compte, formulaire serveur ou système de réservation n’est présent.
 
