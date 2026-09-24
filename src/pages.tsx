@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Building2, Check, ChevronDown, Clock3, Compass, GraduationCap, HeartHandshake, Layers3, Mail, MapPin, Megaphone, Network, Target } from 'lucide-react'
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Building2, Check, ChevronDown, Clock3, Compass, GraduationCap, HeartHandshake, Layers3, Mail, MapPin, Megaphone, Network, Pause, Play, Target } from 'lucide-react'
 import { content } from './content'
 import { contactHref, routes } from './navigation'
 import type { Language, PageId, PageIntro } from './types'
@@ -49,10 +49,39 @@ function Hero({ language }: { language: Language }) {
   const copy = content[language]
   const labels = ui[language]
   const [active, setActive] = useState(0)
+  const [autoplay, setAutoplay] = useState(() => !window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  const [visible, setVisible] = useState(() => !document.hidden)
+  const [inView, setInView] = useState(true)
+  const heroRef = useRef<HTMLElement>(null)
+  const rotationRef = useRef<HTMLButtonElement>(null)
   const changeScene = (direction: number) => setActive((current) => (current + direction + heroScenes.length) % heroScenes.length)
 
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const onMotionChange = () => { if (media.matches) setAutoplay(false) }
+    const onVisibilityChange = () => setVisible(!document.hidden)
+    media.addEventListener('change', onMotionChange)
+    document.addEventListener('visibilitychange', onVisibilityChange)
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0 })
+    if (heroRef.current) observer.observe(heroRef.current)
+    return () => {
+      media.removeEventListener('change', onMotionChange)
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+      observer.disconnect()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!autoplay || !visible || !inView) return
+    // Restart the delay after every slide, including a manual arrow click.
+    const timer = window.setTimeout(() => setActive(current => (current + 1) % heroScenes.length), 6000)
+    return () => window.clearTimeout(timer)
+  }, [active, autoplay, visible, inView])
+
   return (
-    <section className="home-hero" data-scene={heroScenes[active]} aria-labelledby="home-title">
+    <section ref={heroRef} className="home-hero" data-scene={heroScenes[active]} aria-labelledby="home-title" onFocusCapture={event => {
+      if (event.target !== rotationRef.current && event.target.matches(':focus-visible')) setAutoplay(false)
+    }}>
       {heroScenes.map((scene, index) => (
         <img
           key={scene}
@@ -82,11 +111,12 @@ function Hero({ language }: { language: Language }) {
             </a>
           </div>
           <div className="flex flex-col items-end gap-4">
-            <p className="text-[10px] tracking-[.1em] uppercase" aria-live="polite" aria-atomic="true">
+            <p className="text-[10px] tracking-[.1em] uppercase" aria-live={autoplay ? 'off' : 'polite'} aria-atomic="true">
               <span className="sr-only">{labels.scene} {active + 1} {labels.of} {heroScenes.length} : </span>
               {copy.hero.slides[active].label}
             </p>
             <div className="hero-carousel">
+              <button ref={rotationRef} className="liquid-glass" type="button" aria-label={autoplay ? labels.pauseSlideshow : labels.playSlideshow} title={autoplay ? labels.pauseSlideshow : labels.playSlideshow} onClick={() => setAutoplay(current => !current)}>{autoplay ? <Pause size={17} aria-hidden="true" /> : <Play size={17} aria-hidden="true" />}</button>
               <button className="liquid-glass" type="button" aria-label={labels.previous} onClick={() => changeScene(-1)}><ArrowLeft size={19} aria-hidden="true" /></button>
               <span aria-hidden="true">{number(active + 1)} <span className="opacity-50">/ {number(heroScenes.length)}</span></span>
               <button className="liquid-glass" type="button" aria-label={labels.next} onClick={() => changeScene(1)}><ArrowRight size={19} aria-hidden="true" /></button>

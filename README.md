@@ -72,4 +72,4 @@ Les photographies sont stockées dans `public/images/`. Les auteurs, pages sourc
 
 ## Accessibilité
 
-Navigation au clavier, lien d’évitement, menu mobile avec fermeture par Échap, accordéons natifs, états actifs, libellés bilingues et prise en charge de `prefers-reduced-motion`. Le carrousel photographique est manuel. La page défile normalement et le hero peut s’étendre sur les écrans très courts pour conserver son contenu.
+Navigation au clavier, lien d’évitement, menu mobile avec fermeture par Échap, accordéons natifs, états actifs, libellés bilingues et prise en charge de `prefers-reduced-motion`. Les paragraphes sont justifiés avec césure automatique selon la langue. Le carrousel photographique avance toutes les six secondes, avec des flèches manuelles et un bouton pause/reprise. Il s’arrête lorsque le hero est hors écran ou l’onglet masqué. La réduction des animations et la navigation au clavier désactivent le démarrage automatique ; le visiteur peut le relancer avec le bouton de lecture. La page défile normalement et le hero peut s’étendre sur les écrans très courts pour conserver son contenu.

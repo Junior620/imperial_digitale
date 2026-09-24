@@ -93,6 +93,15 @@
     text-wrap: balance;
   }
   .muted { color: var(--site-muted); }
+  .body-copy, .lead-copy, .page-description, .home-hero-description,
+  .service-row-description, .why-card p, .benefit-item p,
+  .contact-panel p:not(.eyebrow), .footer-brand > p, .service-items > li {
+    text-align: justify;
+    text-align-last: start;
+    text-justify: inter-word;
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
   .btn {
     display: inline-flex;
     flex-shrink: 0;
