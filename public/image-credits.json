@@ -1,0 +1,88 @@
+{
+  "verifiedAt": "2026-09-24",
+  "usageNote": "These licensed stock photographs are illustrative. They do not depict Imperial Digitale employees, clients, offices, delivered projects or owned infrastructure. Geographic descriptions below refer only to the locations documented by the photographers.",
+  "license": {
+    "name": "Unsplash License",
+    "url": "https://unsplash.com/license",
+    "summary": "Free download and use, including commercial use. Attribution is appreciated. Do not sell unmodified images or compile them to replicate a competing image service."
+  },
+  "images": [
+    {
+      "file": "/images/hero-collaboration.jpg",
+      "description": "Glass office building facades in Milan, Italy at night, with deep blue reflections and warm illuminated windows. Architecture stock used as an abstract corporate setting; not Imperial Digitale premises.",
+      "photographer": "Jahanzeb Ahsan",
+      "sourceUrl": "https://unsplash.com/photos/illuminated-office-building-windows-at-night-Xqb8MqNS8hc",
+      "licenseUrl": "https://unsplash.com/license",
+      "downloadUrl": "https://images.unsplash.com/photo-1771442062904-44dddcea7fcf?w=1920&q=76&fm=jpg",
+      "width": 1920,
+      "height": 1237,
+      "bytes": 340690
+    },
+    {
+      "file": "/images/architecture.jpg",
+      "description": "Glass office towers under a deep blue twilight sky in London, United Kingdom; warm illuminated windows and a naturally dark foreground.",
+      "photographer": "Uran Wang",
+      "sourceUrl": "https://unsplash.com/photos/a-city-skyline-with-skyscrapers-lit-up-at-night-zu2dcPNpJ0o",
+      "licenseUrl": "https://unsplash.com/license",
+      "downloadUrl": "https://images.unsplash.com/photo-1708453104860-ba8f4ea20680?fit=crop&fm=jpg&q=80&w=1920",
+      "width": 1920,
+      "height": 1275,
+      "bytes": 358394
+    },
+    {
+      "file": "/images/collaboration.jpg",
+      "description": "A diverse group of technology professionals discussing work around a long wooden conference table with laptops. Illustrative stock photography, not Imperial Digitale staff.",
+      "photographer": "Christina @ wocintechchat.com M",
+      "sourceUrl": "https://unsplash.com/photos/group-of-people-sitting-beside-rectangular-wooden-table-with-laptops-faEfWCdOKIg",
+      "licenseUrl": "https://unsplash.com/license",
+      "downloadUrl": "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?fit=crop&fm=jpg&q=78&w=1920",
+      "width": 1920,
+      "height": 1282,
+      "bytes": 403222
+    },
+    {
+      "file": "/images/infrastructure.jpg",
+      "description": "Dark server racks with network cabling and illuminated status indicators, photographed at the University of Washington in Seattle, United States.",
+      "photographer": "Taylor Vick",
+      "sourceUrl": "https://unsplash.com/photos/cable-network-M5tzZtFCOfs",
+      "licenseUrl": "https://unsplash.com/license",
+      "downloadUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?fit=crop&fm=jpg&q=78&w=1200",
+      "width": 1200,
+      "height": 673,
+      "bytes": 194775
+    },
+    {
+      "file": "/images/team.jpg",
+      "description": "Professionals with laptops listening during a meeting around a white table. Illustrative stock photography, not Imperial Digitale staff.",
+      "photographer": "UK Black Tech",
+      "sourceUrl": "https://unsplash.com/photos/a-group-of-people-sitting-around-a-white-table-dGfIJdxvTLY",
+      "licenseUrl": "https://unsplash.com/license",
+      "downloadUrl": "https://images.unsplash.com/photo-1653565685001-92267a18233a?fit=crop&fm=jpg&q=78&w=1200",
+      "width": 1200,
+      "height": 799,
+      "bytes": 107612
+    },
+    {
+      "file": "/images/city.jpg",
+      "description": "Nairobi, Kenya skyline in daylight, with modern buildings and green parkland.",
+      "photographer": "imsogabriel stock",
+      "sourceUrl": "https://unsplash.com/photos/a-cityscape-of-nairobi-kenya-on-a-sunny-day-IaJm3mq0F5o",
+      "licenseUrl": "https://unsplash.com/license",
+      "downloadUrl": "https://images.unsplash.com/photo-1741991110666-88115e724741?fit=crop&fm=jpg&q=75&w=1200",
+      "width": 1200,
+      "height": 675,
+      "bytes": 195104
+    },
+    {
+      "file": "/images/workspace.jpg",
+      "description": "A spacious modern conference room with a wooden table, upholstered chairs and floor-to-ceiling windows, photographed at Sunday Digital in Munich, Germany.",
+      "photographer": "Nastuh Abootalebi",
+      "sourceUrl": "https://unsplash.com/photos/photo-of-dining-table-and-chairs-inside-room-eHD8Y1Znfpk",
+      "licenseUrl": "https://unsplash.com/license",
+      "downloadUrl": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?fit=crop&fm=jpg&q=78&w=1200",
+      "width": 1200,
+      "height": 801,
+      "bytes": 157245
+    }
+  ]
+}
